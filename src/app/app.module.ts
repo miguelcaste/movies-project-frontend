@@ -26,6 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     CatalogComponent,
     PlaylistComponent,
-    ProfileComponent
+    ProfileComponent,
+    PlaylistListComponent,
+
   ],
   imports: [
     BrowserModule,

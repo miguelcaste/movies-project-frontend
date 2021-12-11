@@ -12,12 +12,12 @@
     <mat-card-actions>
         <mat-form-field appearance="fill">
             <mat-label>Playlists</mat-label>
-            <mat-select  name="selectedValue">
-              <mat-option *ngFor="let playlist of playlists" [value]="playlist.value">
+            <mat-select  [(value)]="selectedValue">
+              <mat-option *ngFor="let playlist of playlists" #txtSearch [value]="playlist.value">
                 {{playlist.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button type="button" color="accent">ADD TO A PLAYLIST</button>
+          <button mat-raised-button type="button" color="accent" (click)="addPlaylist(selectedValue,movie.id,movie.title)">ADD TO A PLAYLIST</button>
     </mat-card-actions>
 </mat-card>

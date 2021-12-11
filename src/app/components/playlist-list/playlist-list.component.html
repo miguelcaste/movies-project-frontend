@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <span>Playlist</span>
+  </mat-toolbar>
+
+<div class=form>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Playlist</mat-label>
+                <input matInput  type="text" #txtSearch (keyup.enter)="addPlaylist(txtSearch.value)">
+                <!-- <input matInput  type="text" #txtSearch (keyup)="search( txtSearch.value )" [(ngModel)] = "searchName"> -->
+            </mat-form-field>
+          </p>
+    
+          <div class="example-button-row">
+            <button mat-raised-button type="button" color="accent" (click)="addPlaylist(txtSearch.value)">Add</button>
+          </div>  
+
+</div>
+
+<mat-toolbar color="primary" *ngFor="let playlist of playlistList">
+    <span>{{playlist.name}} </span>
+    <button mat-raised-button type="button" color="warn" (click)="deletePlaylist(playlist.name)">Delete</button>
+  </mat-toolbar>

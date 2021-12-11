@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { PlaylistComponent } from './components/playlist/playlist.component';
+import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'playlist',
-    component: PlaylistComponent,
+    component: PlaylistListComponent,
   },
   {
     path: 'profile',

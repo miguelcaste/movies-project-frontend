@@ -24,8 +24,17 @@ export class ImdbServiceService {
 
   ) { }
 
+  // Buscar una pelicula. Ejemplo: https://imdb-api.com/en/API/SearchMovie/k_ewh6f4fm/Orange
+
   search(title:String): Observable<any>{
     return this.http.get<any>(this.baseUrl+'/'+this.searchMovie+'/'+this.api+'/'+title);
   }
+
+  // Obtener mas datos sobre esa pelicula Ejemplo: https://imdb-api.com/en/API/Title/k_ewh6f4fm/tt0066921
+
+  obtainMoreInfo(id:string): Observable<any>{
+    return this.http.get<any>(this.baseUrl+'/'+this.title+'/'+this.api+'/'+id);
+  }
+
 
 }
