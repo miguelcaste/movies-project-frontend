@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <span>Catalog</span>
+  </mat-toolbar>
+
+<div class=form>
+    <form>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Movie</mat-label>
+                <input matInput  type="text" #txtSearch (keyup.enter)="search(txtSearch.value)">
+                <!-- <input matInput  type="text" #txtSearch (keyup)="search( txtSearch.value )" [(ngModel)] = "searchName"> -->
+            </mat-form-field>
+          </p>
+    
+          <div class="example-button-row">
+            <button mat-raised-button type="button" color="accent" (click)="search(txtSearch.value)">Search</button>
+          </div>  
+    
+      </form>
+</div>
+
+<mat-toolbar color="primary">
+  <span></span>
+  <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+    <span *ngIf="gridColumns === 4">Three Columns</span>
+    <span *ngIf="gridColumns === 3">Four Columns</span>
+  </button>
+</mat-toolbar>
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movieList; let i = index">
+
+      <app-movie [movie] = 'movie' [index] ='i'></app-movie>
+
+    </div>
+  </div>
+</div>
+

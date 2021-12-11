@@ -1,0 +1,23 @@
+
+<mat-card class="mat-elevation-z4">
+    <mat-card-header>
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <mat-card-subtitle>{{movie.year}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{movie.image}}">
+    <!-- <mat-card-content>
+        <p><span class="negrita">Director:</span> {{movie.director}}</p>
+        <p><span class="negrita">Stars:</span> {{movie.actors}}</p>
+    </mat-card-content> -->
+    <mat-card-actions>
+        <mat-form-field appearance="fill">
+            <mat-label>Playlists</mat-label>
+            <mat-select  name="selectedValue">
+              <mat-option *ngFor="let playlist of playlists" [value]="playlist.value">
+                {{playlist.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button type="button" color="accent">ADD TO A PLAYLIST</button>
+    </mat-card-actions>
+</mat-card>
