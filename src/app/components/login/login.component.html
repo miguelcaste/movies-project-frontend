@@ -7,14 +7,14 @@
             <p>
                 <mat-form-field appearance="fill">
                     <mat-label>Username</mat-label>
-                    <input matInput required>
+                    <input matInput required #txtUser>
                 </mat-form-field>
             </p>
 
             <p>
                 <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <input matInput [type]="hide ? 'password' : 'text'" #txtPassword>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
@@ -26,7 +26,8 @@
 
               <div class="example-button-row">
                 <button [routerLink]="'/register'" type="button" mat-raised-button color="primary">Register</button>
-                <button type="submit" mat-raised-button color="accent">Login</button>
+                <button type="button" mat-raised-button color="accent" (click)="login(txtUser.value,txtPassword.value)">Login</button>
+                <!-- Quiza cambiar a tipo submit despues de las pruebas para mandarlo a home -->
               </div>        
 
         </form>

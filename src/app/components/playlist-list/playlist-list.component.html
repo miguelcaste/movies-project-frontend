@@ -12,12 +12,27 @@
           </p>
     
           <div class="example-button-row">
-            <button mat-raised-button type="button" color="accent" (click)="addPlaylist(txtSearch.value)">Add</button>
+            <button mat-raised-button type="button" color="accent" [disabled]="!txtSearch.value" (click)="addPlaylist(txtSearch.value)">Add</button>
           </div>  
 
 </div>
-
-<mat-toolbar color="primary" *ngFor="let playlist of playlistList">
+<div *ngFor="let playlist of playlistList"> 
+<mat-toolbar color="primary" >
     <span>{{playlist.name}} </span>
-    <button mat-raised-button type="button" color="warn" (click)="deletePlaylist(playlist.name)">Delete</button>
-  </mat-toolbar>
+    <button mat-raised-button type="button" color="warn" (click)="deletePlaylist(playlist.id)">Delete</button>
+    <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
+      <span *ngIf="gridColumns === 4">Three Columns</span>
+      <span *ngIf="gridColumns === 3">Four Columns</span>
+    </button>
+</mat-toolbar>
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of playlist.movieList; let i = index">
+      <app-movie-details [movie] = 'movie' [index] ='i'></app-movie-details>
+
+    </div>
+  </div>
+</div>
+
+</div>

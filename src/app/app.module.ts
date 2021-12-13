@@ -27,6 +27,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PlaylistListComponent } from './components/playlist-list/playlist-list.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { PlaylistListComponent } from './components/playlist-list/playlist-list.
     PlaylistComponent,
     ProfileComponent,
     PlaylistListComponent,
+    MovieDetailsComponent,
 
   ],
   imports: [

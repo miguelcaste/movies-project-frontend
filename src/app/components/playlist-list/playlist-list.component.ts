@@ -37,17 +37,21 @@ export class PlaylistListComponent implements OnInit {
 
 
   //Borrado por nombre
-  deletePlaylist(name:string){
+  deletePlaylist(id:string|null){
     this.playlistList.forEach((item,index) => {
-      if (item.name==name) {
+      if (item.id==id) {
+
+
+        this.movieService.deletePlaylist(id).subscribe(dataResult =>{
+          // Me quedo con el id // Es necesario sino refresco la pagina para hacer el delete
+
+        })
+
+
+
         this.playlistList.splice(index,1);
       }
     });
-    console.log(name);
-
-
-
-
 
   }
 
@@ -58,6 +62,11 @@ export class PlaylistListComponent implements OnInit {
     })
   }
 
+  gridColumns = 3;
+
+  toggleGridColumns() {
+    this.gridColumns = this.gridColumns === 3 ? 4 : 3;
+  }
 
 
 }

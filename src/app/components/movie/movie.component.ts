@@ -21,6 +21,8 @@ export class MovieComponent implements OnInit {
 
   playlists: any[] = [];
 
+  size=0;
+
   constructor(
     private imbdService: ImdbServiceService,
     private movieService: MovieServiceService
@@ -37,8 +39,8 @@ export class MovieComponent implements OnInit {
 
   getPlaylists(){
     this.movieService.getAllPlaylists().subscribe(dataResult =>{
-      dataResult.forEach((element: { name:any}) => {
-        let playlist = {value: element.name, viewValue: element.name};
+      dataResult.forEach((element: { id:any,name:any}) => {
+        let playlist = {value: element.id, viewValue: element.name};
         this.playlists.push(playlist);
        })
 
@@ -47,40 +49,70 @@ export class MovieComponent implements OnInit {
     })
   }
 
-  addPlaylist(playlistTitle:string,movieId:string, movieTitle:string){
+  addPlaylist(playlistId:string,movieId:string, movieTitle:string){
     //alert("The movie "+movieTitle+" has been added to the playlist: "+playlistTitle+".")
-    console.log("The movie "+movieTitle+" has been added to the playlist: "+playlistTitle+".");
-    console.log("ID: "+movieId)
+    //this.getPlaylists();
 
-    //OBTENER MAS INFO
-    this.imbdService.obtainMoreInfo(movieId).subscribe(dataResult =>{
-      //this.movieList=dataResult;
-      console.log(dataResult);
-      //console.log(this.movieList);
-      //return this.movieList;
+    //Get playlistbyid
+    this.movieService.getPlaylist(playlistId).subscribe(dataResult =>{
+      console.log(dataResult)
+      if(dataResult.movieList.length>=10){
+        alert("You have reached the limit of 10 movies per playlist");
+      }
+      else{
+        alert("The movie "+movieTitle+" has been added to the playlist "+dataResult.name+".");
+    
+        //OBTENER MAS INFO
+        this.imbdService.obtainMoreInfo(movieId).subscribe(dataResult =>{
+          //this.movieList=dataResult;
+          console.log(dataResult);
+          //console.log(this.movieList);
+          //return this.movieList;
+    
+    
+          console.log(dataResult.id);//id
+          console.log(dataResult.title);//title
+          console.log(dataResult.year);//year
+          console.log(dataResult.image);//image
+          console.log(dataResult.directors);//director
+          console.log(dataResult.stars);//actors
+          let movie: Movie = new Movie(dataResult.id, dataResult.title, dataResult.year, dataResult.image, dataResult.directors, dataResult.stars);
+          
+          this.movieService.addMovieToPlaylist(playlistId,movie).subscribe(dataResult =>{
 
 
-      console.log(dataResult.id);//id
-      console.log(dataResult.title);//title
-      console.log(dataResult.year);//year
-      console.log(dataResult.image);//image
-      console.log(dataResult.directors);//director
-      console.log(dataResult.stars);//actors
-      let movie: Movie = new Movie(dataResult.id, dataResult.title, dataResult.year, dataResult.image, dataResult.directors, dataResult.stars);
-      
-      // POST MOVIE
-
-      // POST PLAYLIST CON MOVIE ID
-
-      //this.movieList=[];
-      //dataResult['results'].forEach((element: { id:any, title: any; description:any,image:any}) => {
-      //let movie: Movie = new Movie(element.id, element.title, element.description, element.image, "N/A", "N/A"); 
-      
-      
-      //this.movieList.push(movie);
+          })
+          
+    
+    
+    
+        })
+      }
+//    for (let index = 0; index < this.playlists.length; index++) {
+//      if (this.playlists[index].value==playlistId) {
+      //this.size=this.playlists[index].list.length;
+      //console.log(this.size)
+      //Comprobar que no tiene mas de 10
+      //if (this.size>=10) {
+      //}
+      //else{
+        
+      //}
 
     })
 
-  }
+      
+    }
+
+
+
+
+
+
+
+    
+
+
+  
 
 }
