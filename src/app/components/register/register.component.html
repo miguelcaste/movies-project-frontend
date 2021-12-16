@@ -39,7 +39,7 @@
 
               <div class="example-button-row">
                 <button [routerLink]="'/login'" type="button" mat-raised-button color="primary">Back</button>
-                <button type="button" mat-raised-button color="accent" (click)="register(txtUser.value,txtEmail.value,txtPassword.value,txtPasswordConfirmation.value)">Register</button>
+                <button [routerLink]="'/login'" type="button" mat-raised-button color="accent" (click)="register(txtUser.value,txtEmail.value,txtPassword.value,txtPasswordConfirmation.value)">Register</button>
               </div>        
 
         </form>

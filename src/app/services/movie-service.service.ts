@@ -80,6 +80,23 @@ export class MovieServiceService {
       return this.http.post<Playlist>(this.baseUrl + '/profiles', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
       }
 
+    getAllProfile(): Observable<any>{
+      return this.http.get<any>(this.baseUrl+'/profiles');
+    }
+
+    getProfile(username:string): Observable<any>{
+      return this.http.get<any>(this.baseUrl+'/profiles'+'/'+username);
+    }
+
+    updateProfile(username:string,profile:Profile): Observable<any>{
+      let body = JSON.stringify(profile);
+      body = body.replace(/"_/g, '"');
+      console.log(body);
+      return this.http.put<Profile>(this.baseUrl + '/profiles'+'/'+username, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+
+    }
+
+
 
 
 }

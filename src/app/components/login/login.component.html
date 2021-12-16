@@ -1,5 +1,5 @@
-<mat-card>
-    <mat-card-title>Login</mat-card-title>
+<mat-card *ngIf="!this.isLogged">
+    <mat-card-title> Login</mat-card-title>
     <mat-card-content>
         <form action="">
 
@@ -14,10 +14,11 @@
             <p>
                 <mat-form-field appearance="fill" floatLabel="always">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" #txtPassword>
+                    <input matInput required [type]="hide ? 'password' : 'text'" #txtPassword>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+
                 </mat-form-field>              
             </p>
 
@@ -26,11 +27,31 @@
 
               <div class="example-button-row">
                 <button [routerLink]="'/register'" type="button" mat-raised-button color="primary">Register</button>
-                <button type="button" mat-raised-button color="accent" (click)="login(txtUser.value,txtPassword.value)">Login</button>
+                <button type="submit" mat-raised-button color="accent" (click)="login(txtUser.value,txtPassword.value)">Login</button>
                 <!-- Quiza cambiar a tipo submit despues de las pruebas para mandarlo a home -->
               </div>        
 
         </form>
     </mat-card-content>
+
+
+
+</mat-card>
+
+<mat-card *ngIf="this.isLogged">
+    <mat-card-title> Logout</mat-card-title>
+    <mat-card-content>
+        <form action="">
+                    <mat-label>You're login as {{this.userLogin}}</mat-label>
+
+              <div class="example-button-row">
+                <button type="submit" mat-raised-button color="warn" (click)="logout()">Logout</button>
+                <!-- Quiza cambiar a tipo submit despues de las pruebas para mandarlo a home -->
+              </div>        
+
+        </form>
+    </mat-card-content>
+
+
 
 </mat-card>

@@ -2,7 +2,7 @@
     <span>Playlist</span>
   </mat-toolbar>
 
-<div class=form>
+<div class=form *ngIf="this.isLogged">
         <p>
             <mat-form-field appearance="fill">
                 <mat-label>Playlist</mat-label>
@@ -18,8 +18,11 @@
 </div>
 <div *ngFor="let playlist of playlistList"> 
 <mat-toolbar color="primary" >
-    <span>{{playlist.name}} </span>
-    <button mat-raised-button type="button" color="warn" (click)="deletePlaylist(playlist.id)">Delete</button>
+    <span>{{playlist.name}} (by {{playlist.author}}) </span>
+    <span class="example-spacer"></span>
+
+    <button *ngIf="this.isLogged && (playlist.author==this.userLogin) " mat-raised-button type="button" color="warn" (click)="deletePlaylist(playlist.id)">Delete</button>
+    
     <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
       <span *ngIf="gridColumns === 4">Three Columns</span>
       <span *ngIf="gridColumns === 3">Four Columns</span>

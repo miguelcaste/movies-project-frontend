@@ -11,7 +11,8 @@ export class Profile {
         private _password: string,
         private _email: string,
         private _image: string,
-        private _biography: string
+        private _biography: string,
+        private _logged: boolean
     ){}
         
     public get username(): string {
@@ -43,6 +44,12 @@ export class Profile {
     }
     public set biography(value: string) {
         this._biography = value;
+    }
+    public get logged(): boolean {
+        return this._logged;
+    }
+    public set logged(value: boolean) {
+        this._logged = value;
     }
 
 

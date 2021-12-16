@@ -21,6 +21,8 @@
 
 <mat-toolbar color="primary">
   <span></span>
+  <span class="example-spacer"></span>
+
   <button mat-button (click)="toggleGridColumns()" fxHide.lt-md>
     <span *ngIf="gridColumns === 4">Three Columns</span>
     <span *ngIf="gridColumns === 3">Four Columns</span>

@@ -29,3 +29,8 @@ a:link {
   .active {
     background-color: #CCC;
   }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+

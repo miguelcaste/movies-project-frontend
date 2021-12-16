@@ -5,23 +5,42 @@
   <span>
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
   </span>
-  <span>
+  <!-- <span>
     <a routerLink="/movies" routerLinkActive="active">Movies</a>
-  </span>
-  <span>
-    <a routerLink="/login" routerLinkActive="active">Login</a>
-  </span>
-  <span>
+  </span> -->
+
+  <!-- <span>
     <a routerLink="/register" routerLinkActive="active">Register</a>
-  </span>
+  </span> -->
   <span>
     <a routerLink="/catalog" routerLinkActive="active">Catalog</a>
   </span>
   <span>
     <a routerLink="/playlist" routerLinkActive="active">Playlist</a>
   </span>
-  <span>
-    <a routerLink="/profile" routerLinkActive="active">Profile</a>
+
+
+
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button> -->
+
+  <!-- <button mat-button disabled>
+    <img  src="{{this.imageLogin}}">
+  </button> -->
+
+  <span *ngIf="!this.isLogged">
+    <a routerLink="/login" routerLinkActive="active">Login</a>
   </span>
+
+  <span *ngIf="this.isLogged">
+    <a routerLink="/profile" routerLinkActive="active">{{this.userLogin}}</a>
+  </span>
+  <span *ngIf="this.isLogged">
+    <a routerLink="/login" routerLinkActive="active">Logout</a>
+  </span>
+
+
 </mat-toolbar>
 

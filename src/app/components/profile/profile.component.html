@@ -1,1 +1,70 @@
-<p>profile works!</p>
+<mat-card>
+    <mat-card-title>Profile</mat-card-title>
+    <mat-card-content>
+        <br>
+
+
+        <form action="">
+            <img mat-card-image src="{{this.image}}">
+
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Image</mat-label>
+                    <input matInput required #txtImage [value]=this.image>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput required #txtUser [value]=this.userLogin>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="pat@example.com"  required #txtEmail [value]=this.email>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" #txtPassword [value]=this.password>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>              
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill" floatLabel="always">
+                    <mat-label>Password confirmation</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" #txtPasswordConfirmation [value]=this.password>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>              
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Biography</mat-label>
+                    <input matInput #txtBiography [value]=this.biography>
+                </mat-form-field>
+            </p>
+
+
+
+
+
+              <div class="example-button-row">
+                <button type="submit" mat-raised-button color="accent" (click)="updateProfile(txtUser.value,txtEmail.value,txtPassword.value,txtPasswordConfirmation.value,txtImage.value,txtBiography.value)">Update</button>
+              </div>        
+
+        </form>
+    </mat-card-content>
+
+</mat-card>

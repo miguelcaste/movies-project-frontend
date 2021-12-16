@@ -9,7 +9,7 @@
         <p><span class="negrita">Director:</span> {{movie.director}}</p>
         <p><span class="negrita">Stars:</span> {{movie.actors}}</p>
     </mat-card-content> -->
-    <mat-card-actions>
+    <mat-card-actions *ngIf="this.isLogged">
         <mat-form-field appearance="fill">
             <mat-label>Playlists</mat-label>
             <mat-select  [(value)]="selectedValue">

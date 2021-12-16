@@ -31,9 +31,28 @@ export class MovieComponent implements OnInit {
     this.selectedValue='';
   }
 
+  userLogin="";
+  isLogged=false;
+
   ngOnInit(): void {
     //cargar las playlist
-    this.getPlaylists();
+    
+    this.checkLogin();
+
+      this.getPlaylists();
+  }
+
+  checkLogin(){
+
+    this.movieService.getAllProfile().subscribe(dataResult =>{
+      dataResult.forEach((element: { username:any,password:any,email:any, image:any, biography:any, logged:any}) => {
+        if(element.logged==true){ //El usuario esta registrado
+          this.userLogin=element.username;
+          this.isLogged=true;
+        }
+      })
+    });
+
   }
 
 
